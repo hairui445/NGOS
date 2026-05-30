@@ -1,0 +1,15 @@
+
+[build-system]
+requires = ["maturin>=1.7,<2.0"]
+build-backend = "maturin"
+
+[project]
+name = "ngos"
+version = "0.1.0"
+description = "NGOS Python SDK powered by PyO3"
+requires-python = ">=3.10"
+classifiers = ["Programming Language :: Python :: 3"]
+
+[tool.maturin]
+features = ["pyo3/extension-module"]
+

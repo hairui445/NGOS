@@ -1,0 +1,13 @@
+[package]
+name = "ngos_cpu_plugin"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+authors.workspace = true
+
+[lib]
+name = "ngos_cpu_plugin"  # 确保这里和文件名一致
+crate-type = ["cdylib"]
+
+[dependencies]
+plugin_sdk.workspace = true

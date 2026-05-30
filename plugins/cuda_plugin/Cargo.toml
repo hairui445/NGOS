@@ -1,0 +1,16 @@
+
+[package]
+name = "ngos_cuda_plugin"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+authors.workspace = true
+
+[lib]
+name = "ngos_cuda_plugin"
+crate-type = ["cdylib"]
+
+[dependencies]
+libloading.workspace = true
+plugin_sdk.workspace = true
+

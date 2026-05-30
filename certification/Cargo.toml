@@ -1,0 +1,17 @@
+[package]
+name = "ngos-cert"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+authors.workspace = true
+description = "NGOS Runtime Middleware Certification Tool"
+
+[dependencies]
+# 继承自根目录 Workspace 的依赖
+anyhow.workspace = true
+serde_json.workspace = true
+tracing.workspace = true
+
+# 核心依赖：必须确保这里指向的是工作空间中的 runtime_core
+runtime_core = { workspace = true }
+ngos_spec = { workspace = true }

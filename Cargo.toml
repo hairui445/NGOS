@@ -1,0 +1,43 @@
+[workspace]
+# 核心修正：添加了 runtime_core，确保它是工作空间的一员
+members = [
+    "ngos_spec",
+    "plugin_sdk",
+    "runtime_core",
+    "plugins/cpu_plugin",
+    "plugins/cuda_plugin",
+    "certification",
+    "benchmark",
+    "bindings/python",
+]
+
+# 指定解析器版本，优化依赖解析效率
+resolver = "2"
+
+[workspace.package]
+edition = "2021"
+license = "Apache-2.0"
+version = "0.1.0"
+authors = ["NGOS Contributors"]
+
+[workspace.dependencies]
+# 内部模块依赖：显式定义路径，方便子模块继承
+ngos_spec = { path = "ngos_spec" }
+plugin_sdk = { path = "plugin_sdk" }
+runtime_core = { path = "runtime_core" }
+
+# 第三方库：统一版本管理，防止版本冲突
+anyhow = "1.0"
+libloading = "0.8"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+thiserror = "2.0"
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["fmt", "json", "env-filter"] }
+
+# 工业级性能优化配置
+[profile.release]
+opt-level = 3        # 最大化优化性能
+lto = "fat"          # 开启全程序链路优化，对中间件性能提升巨大
+codegen-units = 1    # 减少编译单元以优化执行速度
+panic = "abort"      # 减少二进制体积，在生产环境更稳健
